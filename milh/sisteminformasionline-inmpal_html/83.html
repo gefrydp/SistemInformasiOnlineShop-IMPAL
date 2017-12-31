@@ -1,0 +1,44 @@
+<html><head><title>rss.php</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" type="text/css" href="sourcestyles.css" />
+</head><body link="blue" vlink="blue">
+<h3>File: Z:\demo\impal\SistemInformasiOnlineShop-IMPAL\module\rss.php</h3>
+<SCRIPT>
+defaultStatus = "File: Z:\\demo\\impal\\SistemInformasiOnlineShop-IMPAL\\module\\rss.php";
+top.document.title  = "rss.php";
+</SCRIPT>
+<pre><span class="default"></span><a name="1"><font size=-1>1     </font></a><span class="default">&lt;?php</span>
+<a name="2"><font size=-1>2     </font></a><span class="default">	<a href="dictionary_S.html#849">session_start</a>();</span>
+<a name="3"><font size=-1>3     </font></a><span class="default"></span>
+<a name="4"><font size=-1>4     </font></a><span class="default">	</span><span class="keyword">include </span><span class="string">&quot;./includes/koneksi.php&quot;</span><span class="default">; </span><span class="comment">// Memanggil File Koneksi</span>
+<a name="5"><font size=-1>5     </font></a><span class="comment"></span>
+<a name="6"><font size=-1>6     </font></a><span class="comment">	</span><span class="default">$<a href="dictionary_S.html#866">sql</a> = <a href="dictionary_M.html#596">mysql_query</a>(</span><span class="string">&quot;SELECT * FROM t_produk ORDER BY tgl_post DESC LIMIT 10&quot;</span><span class="default">); </span><span class="comment">// Memanggil Table Produk di Urutkan Sesuai Tgl.Post dibatasi 10 Data</span>
+<a name="7"><font size=-1>7     </font></a><span class="comment"></span>
+<a name="8"><font size=-1>8     </font></a><span class="comment">	</span><span class="default">$<a href="dictionary_F.html#306">file</a> = <a href="dictionary_F.html#313">fopen</a>(</span><span class="string">&quot;rss.xml&quot;</span><span class="default">, </span><span class="string">&quot;w&quot;</span><span class="default">);</span>
+<a name="9"><font size=-1>9     </font></a><span class="default"></span>
+<a name="10"><font size=-1>10     </font></a><span class="default">	<a href="dictionary_F.html#324">fwrite</a>($<a href="dictionary_F.html#306">file</a>, </span><span class="string">'&lt;?xml version=&quot;1.0&quot;?&gt; </span>
+<a name="11"><font size=-1>11     </font></a><span class="string">	&lt;rss version=&quot;2.0&quot;&gt; </span>
+<a name="12"><font size=-1>12     </font></a><span class="string">	&lt;channel&gt; </span>
+<a name="13"><font size=-1>13     </font></a><span class="string">	&lt;title&gt;'</span><span class="default">.$<a href="dictionary_J.html#480">judul_web</a>.</span><span class="string">'&lt;/title&gt; </span>
+<a name="14"><font size=-1>14     </font></a><span class="string">	&lt;link&gt;'</span><span class="default">.$<a href="dictionary_Non-Alpha.html#112">_SERVER</a>[</span><span class="string">'HTTP_HOST'</span><span class="default">].</span><span class="string">'&lt;/link&gt; </span>
+<a name="15"><font size=-1>15     </font></a><span class="string">	&lt;description&gt;Feed Description&lt;/description&gt; </span>
+<a name="16"><font size=-1>16     </font></a><span class="string">	&lt;language&gt;en-us&lt;/language&gt;'</span><span class="default">);</span>
+<a name="17"><font size=-1>17     </font></a><span class="default"></span>
+<a name="18"><font size=-1>18     </font></a><span class="default">	</span><span class="keyword">while</span><span class="default">($<a href="dictionary_R.html#756">row</a>=<a href="dictionary_M.html#593">mysql_fetch_array</a>($<a href="dictionary_S.html#866">sql</a>)){</span>
+<a name="19"><font size=-1>19     </font></a><span class="default"></span>
+<a name="20"><font size=-1>20     </font></a><span class="default">	  $<a href="dictionary_D.html#268">deskripsi_produk</a> = <a href="dictionary_H.html#367">htmlentities</a>(<a href="dictionary_S.html#1016">strip_tags</a>(<a href="dictionary_N.html#650">nl2br</a>($<a href="dictionary_R.html#756">row</a>[</span><span class="string">'deskripsi_produk'</span><span class="default">]))); </span>
+<a name="21"><font size=-1>21     </font></a><span class="default">	  $<a href="dictionary_D.html#266">deskripsi</a>   = <a href="dictionary_S.html#1021">substr</a>($<a href="dictionary_D.html#268">deskripsi_produk</a>,</span><span class="number">0</span><span class="default">,</span><span class="number">220</span><span class="default">); </span>
+<a name="22"><font size=-1>22     </font></a><span class="default">	  $<a href="dictionary_D.html#266">deskripsi</a>   = <a href="dictionary_S.html#1021">substr</a>($<a href="dictionary_D.html#268">deskripsi_produk</a>,</span><span class="number">0</span><span class="default">,<a href="dictionary_S.html#1018">strrpos</a>($<a href="dictionary_D.html#266">deskripsi</a>,</span><span class="string">&quot; &quot;</span><span class="default">));</span>
+<a name="23"><font size=-1>23     </font></a><span class="default"></span>
+<a name="24"><font size=-1>24     </font></a><span class="default">	  <a href="dictionary_F.html#324">fwrite</a>($<a href="dictionary_F.html#306">file</a>, </span><span class="string">&quot;&lt;item&gt;</span>
+<a name="25"><font size=-1>25     </font></a><span class="string">					 &lt;title&gt;&quot;</span><span class="default">.$<a href="dictionary_J.html#480">judul_web</a>.</span><span class="string">&quot;&lt;/title&gt;</span>
+<a name="26"><font size=-1>26     </font></a><span class="string">					 &lt;link&gt;http://&quot;</span><span class="default">.$<a href="dictionary_Non-Alpha.html#112">_SERVER</a>[</span><span class="string">'HTTP_HOST'</span><span class="default">].</span><span class="string">&quot;/index.php?module=detail&amp;id=&quot;</span><span class="default">.$<a href="dictionary_R.html#756">row</a>[</span><span class="string">'id_produk'</span><span class="default">].</span><span class="string">&quot;&lt;/link&gt;</span>
+<a name="27"><font size=-1>27     </font></a><span class="string">					 &lt;description&gt;&quot;</span><span class="default">.$<a href="dictionary_D.html#266">deskripsi</a>.</span><span class="string">&quot;&lt;/description&gt;</span>
+<a name="28"><font size=-1>28     </font></a><span class="string">					 &lt;/item&gt;&quot;</span><span class="default">);</span>
+<a name="29"><font size=-1>29     </font></a><span class="default">	}</span>
+<a name="30"><font size=-1>30     </font></a><span class="default"></span>
+<a name="31"><font size=-1>31     </font></a><span class="default">	<a href="dictionary_F.html#324">fwrite</a>($<a href="dictionary_F.html#306">file</a>, </span><span class="string">&quot;&lt;/channel&gt;&lt;/rss&gt;&quot;</span><span class="default">);</span>
+<a name="32"><font size=-1>32     </font></a><span class="default">	<a href="dictionary_F.html#303">fclose</a>($<a href="dictionary_F.html#306">file</a>);</span>
+<a name="33"><font size=-1>33     </font></a><span class="default">?&gt;</span>
+<a name="34"><font size=-1>34     </font></a><span class="default"></span>
+</pre></body></html>

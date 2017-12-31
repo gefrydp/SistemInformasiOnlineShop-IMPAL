@@ -1,0 +1,30 @@
+<html><head><title>koneksi.php</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" type="text/css" href="sourcestyles.css" />
+</head><body link="blue" vlink="blue">
+<h3>File: Z:\demo\impal\SistemInformasiOnlineShop-IMPAL\includes\koneksi.php</h3>
+<SCRIPT>
+defaultStatus = "File: Z:\\demo\\impal\\SistemInformasiOnlineShop-IMPAL\\includes\\koneksi.php";
+top.document.title  = "koneksi.php";
+</SCRIPT>
+<pre><span class="default"></span><a name="1"><font size=-1>1     </font></a><span class="default">&lt;?php</span>
+<a name="2"><font size=-1>2     </font></a><span class="default"></span>
+<a name="3"><font size=-1>3     </font></a><span class="default">	</span><span class="comment">// vMart //</span>
+<a name="4"><font size=-1>4     </font></a><span class="comment">	// Developed by Luqman Hakim //</span>
+<a name="5"><font size=-1>5     </font></a><span class="comment">	// luqman.web.id //</span>
+<a name="6"><font size=-1>6     </font></a><span class="comment"></span>
+<a name="7"><font size=-1>7     </font></a><span class="comment">	</span><span class="default">$<a href="dictionary_S.html#847">server_db</a>=</span><span class="string">'localhost'</span><span class="default">; </span><span class="comment">// Server Database</span>
+<a name="8"><font size=-1>8     </font></a><span class="comment">	</span><span class="default">$<a href="dictionary_U.html#1111">user_db</a>=</span><span class="string">'root'</span><span class="default">; </span><span class="comment">// Username Database</span>
+<a name="9"><font size=-1>9     </font></a><span class="comment">	</span><span class="default">$<a href="dictionary_P.html#675">pass_db</a>=</span><span class="string">''</span><span class="default">; </span><span class="comment">// Password Database</span>
+<a name="10"><font size=-1>10     </font></a><span class="comment">	</span><span class="default">$<a href="dictionary_D.html#258">database</a>=</span><span class="string">'vmart_db'</span><span class="default">; </span><span class="comment">// Nama Database</span>
+<a name="11"><font size=-1>11     </font></a><span class="comment">	</span>
+<a name="12"><font size=-1>12     </font></a><span class="comment"></span>
+<a name="13"><font size=-1>13     </font></a><span class="comment">	<a href="dictionary_M.html#591">mysql_connect</a></span><span class="default">($<a href="dictionary_S.html#847">server_db</a>,$<a href="dictionary_U.html#1111">user_db</a>,$<a href="dictionary_P.html#675">pass_db</a>) </span><span class="keyword">or die </span><span class="default">(</span><span class="string">&quot;Koneksi MySQL Gagal!!&quot;</span><span class="default">);</span>
+<a name="14"><font size=-1>14     </font></a><span class="default">	<a href="dictionary_M.html#598">mysql_select_db</a>($<a href="dictionary_D.html#258">database</a>) </span><span class="keyword">or die</span><span class="default">(</span><span class="string">&quot;Database Tidak Tersedia!&quot;</span><span class="default">);</span>
+<a name="15"><font size=-1>15     </font></a><span class="default"></span>
+<a name="16"><font size=-1>16     </font></a><span class="default">	$<a href="dictionary_S.html#844">salt_pass</a>=<a href="dictionary_M.html#571">md5</a>(</span><span class="string">&quot;p[T-LvZty/VDUz~/g/(a&amp;?h*Ie@k^mThY23hsc&gt;-! m6#SK,i;&amp;Kt8+L:AxIb&quot;</span><span class="default">); </span><span class="comment">// Salt Untuk Security Password</span>
+<a name="17"><font size=-1>17     </font></a><span class="comment"></span>
+<a name="18"><font size=-1>18     </font></a><span class="comment"></span>
+<a name="19"><font size=-1>19     </font></a><span class="comment"></span><span class="default">?&gt;</span>
+<a name="20"><font size=-1>20     </font></a><span class="default"></span>
+</pre></body></html>

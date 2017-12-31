@@ -1,0 +1,28 @@
+<html><head><title>tagihan.php</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" type="text/css" href="sourcestyles.css" />
+</head><body link="blue" vlink="blue">
+<h3>File: Z:\demo\impal\SistemInformasiOnlineShop-IMPAL\module\tagihan.php</h3>
+<SCRIPT>
+defaultStatus = "File: Z:\\demo\\impal\\SistemInformasiOnlineShop-IMPAL\\module\\tagihan.php";
+top.document.title  = "tagihan.php";
+</SCRIPT>
+<pre><span class="default"></span><a name="1"><font size=-1>1     </font></a><span class="default">&lt;?php</span>
+<a name="2"><font size=-1>2     </font></a><span class="default"><a href="dictionary_S.html#849">session_start</a>();</span>
+<a name="3"><font size=-1>3     </font></a><span class="default">	</span><span class="keyword">if</span><span class="default">(!</span><span class="keyword">isset</span><span class="default">($<a href="dictionary_Non-Alpha.html#113">_SESSION</a>[</span><span class="string">'id_member'</span><span class="default">]) &amp;&amp; !</span><span class="keyword">isset</span><span class="default">($<a href="dictionary_Non-Alpha.html#113">_SESSION</a>[</span><span class="string">'username'</span><span class="default">])){ </span><span class="comment">// Jika Session Kosong Maka Harus Login</span>
+<a name="4"><font size=-1>4     </font></a><span class="comment">		<a href="dictionary_H.html#356">header</a></span><span class="default">(</span><span class="string">'location:index.php'</span><span class="default">);</span>
+<a name="5"><font size=-1>5     </font></a><span class="default">	}</span>
+<a name="6"><font size=-1>6     </font></a><span class="default">	</span>
+<a name="7"><font size=-1>7     </font></a><span class="default">$<a href="dictionary_S.html#900">sql_check</a>=<a href="dictionary_M.html#596">mysql_query</a>(</span><span class="string">&quot;select id_order from t_order where id_member=&quot;</span><span class="default">.$<a href="dictionary_I.html#413">id_member</a>.</span><span class="string">&quot;&quot;</span><span class="default">) </span><span class="keyword">or die</span><span class="default">(<a href="dictionary_M.html#592">mysql_error</a>()); </span><span class="comment">// Memanggil Tabel Order Sesuai ID Member</span>
+<a name="8"><font size=-1>8     </font></a><span class="comment"></span><span class="default">$<a href="dictionary_C.html#245">check</a>=<a href="dictionary_M.html#595">mysql_num_rows</a>($<a href="dictionary_S.html#900">sql_check</a>);</span>
+<a name="9"><font size=-1>9     </font></a><span class="default"></span>
+<a name="10"><font size=-1>10     </font></a><span class="default">	</span><span class="keyword">if</span><span class="default">($<a href="dictionary_C.html#245">check</a>&lt;=</span><span class="number">0</span><span class="default">){ </span><span class="comment">// Jika Data Kosong Maka Muncul Peringatan</span>
+<a name="11"><font size=-1>11     </font></a><span class="comment">		</span><span class="keyword">echo </span><span class="string">&quot;&lt;script&gt;alert('Anda Belum Melakukan Pembelian!');window.location=('index.php');&lt;/script&gt;&quot;</span><span class="default">;</span>
+<a name="12"><font size=-1>12     </font></a><span class="default">	}</span>
+<a name="13"><font size=-1>13     </font></a><span class="default">	</span>
+<a name="14"><font size=-1>14     </font></a><span class="default">	</span>
+<a name="15"><font size=-1>15     </font></a><span class="default"></span>
+<a name="16"><font size=-1>16     </font></a><span class="default">?&gt;</span>
+<a name="17"><font size=-1>17     </font></a><span class="default"></span>
+<a name="18"><font size=-1>18     </font></a><span class="default"></span>
+</pre></body></html>

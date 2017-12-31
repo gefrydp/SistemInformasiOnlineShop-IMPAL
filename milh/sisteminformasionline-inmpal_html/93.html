@@ -1,0 +1,129 @@
+<html><head><title>check-out.php</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" type="text/css" href="sourcestyles.css" />
+</head><body link="blue" vlink="blue">
+<h3>File: Z:\demo\impal\SistemInformasiOnlineShop-IMPAL\template\blue\module\check-out.php</h3>
+<SCRIPT>
+defaultStatus = "File: Z:\\demo\\impal\\SistemInformasiOnlineShop-IMPAL\\template\\blue\\module\\check-out.php";
+top.document.title  = "check-out.php";
+</SCRIPT>
+<pre><span class="default"></span><a name="1"><font size=-1>1     </font></a><span class="default">&lt;?php</span>
+<a name="2"><font size=-1>2     </font></a><span class="default">	</span><span class="keyword">require </span><span class="string">&quot;./module/check-out.php&quot;</span><span class="default">;</span>
+<a name="3"><font size=-1>3     </font></a><span class="default">	</span>
+<a name="4"><font size=-1>4     </font></a><span class="default">	</span>
+<a name="5"><font size=-1>5     </font></a><span class="default">?&gt;</span>
+<a name="6"><font size=-1>6     </font></a><span class="default"></span>
+<a name="7"><font size=-1>7     </font></a><span class="default"></span><span class="string">&lt;style type=&quot;text/css&quot;&gt;</span>
+<a name="8"><font size=-1>8     </font></a><span class="string">.tabel {</span>
+<a name="9"><font size=-1>9     </font></a><span class="string">	color: #FFF;</span>
+<a name="10"><font size=-1>10     </font></a><span class="string">}</span>
+<a name="11"><font size=-1>11     </font></a><span class="string">&lt;/style&gt;</span>
+<a name="12"><font size=-1>12     </font></a><span class="string">  &lt;div class=&quot;bread&quot;&gt;&lt;b style=&quot;font-weight:bold&quot;&gt;- Alamat Pengiriman :&lt;/b&gt;&lt;/div&gt;</span>
+<a name="13"><font size=-1>13     </font></a><span class="string">&lt;table width=&quot;559&quot; height=&quot;217&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;4&quot;&gt;</span>
+<a name="14"><font size=-1>14     </font></a><span class="string">  &lt;tr&gt;</span><span class="default">&lt;?php </span><span class="keyword">echo</span><span class="string">&quot;</span>
+<a name="15"><font size=-1>15     </font></a><span class="string">    &lt;td width=301 valign=top scope=col&gt;</span>
+<a name="16"><font size=-1>16     </font></a><span class="string">    &lt;p&gt;&lt;b&gt;Nama  :&lt;/b&gt; &quot;</span><span class="default">.$<a href="dictionary_R.html#807">row_member</a>[</span><span class="string">'nama_lengkap'</span><span class="default">].</span><span class="string">&quot;&lt;/p&gt;</span>
+<a name="17"><font size=-1>17     </font></a><span class="string">    &lt;p&gt;&lt;b&gt;No. Telp :&lt;/b&gt; &quot;</span><span class="default">.$<a href="dictionary_R.html#807">row_member</a>[</span><span class="string">'no_telp'</span><span class="default">].</span><span class="string">&quot;&lt;/p&gt;</span>
+<a name="18"><font size=-1>18     </font></a><span class="string">	&lt;h4 style='color:#FF0000; background-color:#F4E6C9'&gt;&gt; Biaya Pengiriman :&lt;/h4&gt;</span>
+<a name="19"><font size=-1>19     </font></a><span class="string">	&quot;</span><span class="default">;</span>
+<a name="20"><font size=-1>20     </font></a><span class="default">	</span>
+<a name="21"><font size=-1>21     </font></a><span class="default">		</span>
+<a name="22"><font size=-1>22     </font></a><span class="default">		</span><span class="keyword">if</span><span class="default">($<a href="dictionary_C.html#251">check_ship</a>&lt;</span><span class="number">1</span><span class="default">){</span>
+<a name="23"><font size=-1>23     </font></a><span class="default">			$<a href="dictionary_S.html#1009">status_ship</a>=</span><span class="string">&quot;Fail&quot;</span><span class="default">;</span>
+<a name="24"><font size=-1>24     </font></a><span class="default">			</span><span class="keyword">echo </span><span class="string">&quot;Maaf, Kami Belum Melayani Pengiriman ke Wilayah Anda!&quot;</span><span class="default">;</span>
+<a name="25"><font size=-1>25     </font></a><span class="default">		}</span><span class="keyword">else</span><span class="default">{</span>
+<a name="26"><font size=-1>26     </font></a><span class="default">			$<a href="dictionary_S.html#1000">status</a>=</span><span class="string">&quot;Suc&quot;</span><span class="default">;</span>
+<a name="27"><font size=-1>27     </font></a><span class="default">			</span><span class="keyword">echo </span><span class="string">&quot;	Dari : &quot;</span><span class="default">.$<a href="dictionary_K.html#533">kota_toko</a>.</span><span class="string">&quot; &lt;br&gt;</span>
+<a name="28"><font size=-1>28     </font></a><span class="string">					Tujuan : &quot;</span><span class="default">.$<a href="dictionary_R.html#807">row_member</a>[</span><span class="string">'kota'</span><span class="default">].</span><span class="string">&quot; &lt;br&gt;</span>
+<a name="29"><font size=-1>29     </font></a><span class="string">					Kurir : &quot;</span><span class="default">.$<a href="dictionary_R.html#817">row_ship</a>[</span><span class="string">'kurir'</span><span class="default">].</span><span class="string">&quot;&lt;br&gt;</span>
+<a name="30"><font size=-1>30     </font></a><span class="string">					Biaya : &quot;</span><span class="default">.<a href="dictionary_F.html#316">formatRupiah</a>($<a href="dictionary_B.html#199">biaya_kirim</a>).</span><span class="string">&quot;&lt;br&gt;&quot;</span><span class="default">;</span>
+<a name="31"><font size=-1>31     </font></a><span class="default">		};</span>
+<a name="32"><font size=-1>32     </font></a><span class="default"></span>
+<a name="33"><font size=-1>33     </font></a><span class="default"></span>
+<a name="34"><font size=-1>34     </font></a><span class="default">	</span><span class="keyword">echo </span><span class="string">&quot;</span>
+<a name="35"><font size=-1>35     </font></a><span class="string">	</span>
+<a name="36"><font size=-1>36     </font></a><span class="string">	&lt;/td&gt;</span>
+<a name="37"><font size=-1>37     </font></a><span class="string">	</span>
+<a name="38"><font size=-1>38     </font></a><span class="string">    &lt;td width=356 valign=top scope=col&gt;&lt;p&gt;&lt;b&gt;Tanggal Order :&lt;/b&gt; &quot;</span><span class="default">.<a href="dictionary_T.html#1041">TanggalIndo</a>($<a href="dictionary_T.html#1056">tgl_sekarang</a>).</span><span class="string">&quot;&lt;/p&gt;</span>
+<a name="39"><font size=-1>39     </font></a><span class="string">    &lt;p&gt;&lt;b&gt;Alamat :&lt;/b&gt; &quot;</span><span class="default">.$<a href="dictionary_R.html#807">row_member</a>[</span><span class="string">'alamat'</span><span class="default">].</span><span class="string">&quot;&lt;/p&gt;</span>
+<a name="40"><font size=-1>40     </font></a><span class="string">    &lt;p&gt;&lt;b&gt;Kota : &lt;/b&gt;&quot;</span><span class="default">.$<a href="dictionary_R.html#807">row_member</a>[</span><span class="string">'kota'</span><span class="default">].</span><span class="string">&quot;&lt;/p&gt;</span>
+<a name="41"><font size=-1>41     </font></a><span class="string">    &lt;p&gt;&lt;b&gt;Provinsi : &lt;/b&gt;&quot;</span><span class="default">.$<a href="dictionary_R.html#807">row_member</a>[</span><span class="string">'provinsi'</span><span class="default">].</span><span class="string">&quot;&lt;/p&gt;</span>
+<a name="42"><font size=-1>42     </font></a><span class="string">    &lt;p&gt;&lt;b&gt;Kode Pos : &lt;/b&gt;&quot;</span><span class="default">.$<a href="dictionary_R.html#807">row_member</a>[</span><span class="string">'kode_pos'</span><span class="default">].</span><span class="string">&quot;&lt;/p&gt;</span>
+<a name="43"><font size=-1>43     </font></a><span class="string">    &lt;p align=right&gt;&lt;strong&gt;&lt;right&gt;&lt;input type=button onclick=window.location='index.php?module=cart' class='button green' name='ubah' id='ubah' value='Ubah Alamat'&gt;&lt;/right&gt;&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;</span>
+<a name="44"><font size=-1>44     </font></a><span class="string">  &lt;/tr&gt;</span>
+<a name="45"><font size=-1>45     </font></a><span class="string">&lt;/table&gt;&quot;</span><span class="default">;</span>
+<a name="46"><font size=-1>46     </font></a><span class="default"></span>
+<a name="47"><font size=-1>47     </font></a><span class="default"></span><span class="keyword">if</span><span class="default">($<a href="dictionary_S.html#1009">status_ship</a>==</span><span class="string">&quot;Fail&quot;</span><span class="default">){</span>
+<a name="48"><font size=-1>48     </font></a><span class="default">	</span><span class="keyword">echo </span><span class="string">&quot;&lt;hr&gt;Agar Kami Dapat Melayani ke Wilayah Anda , Silahkan Laporkan Wilayah Anda via &lt;a href='index.php?module=pesan'&gt;&lt;b style='color:#FF0000'&gt;PESAN&lt;/b&gt;&lt;hr&gt;&quot;</span><span class="default">;</span>
+<a name="49"><font size=-1>49     </font></a><span class="default">}</span><span class="keyword">else</span><span class="default">{</span>
+<a name="50"><font size=-1>50     </font></a><span class="default"></span>
+<a name="51"><font size=-1>51     </font></a><span class="default">?&gt;</span>
+<a name="52"><font size=-1>52     </font></a><span class="default"></span>
+<a name="53"><font size=-1>53     </font></a><span class="default"> </span><span class="string">&lt;div class=&quot;bread&quot;&gt;&lt;b style=&quot;font-weight:bold&quot;&gt;- Detail Pembelian :&lt;/b&gt;&lt;/div&gt;&lt;br&gt;</span>
+<a name="54"><font size=-1>54     </font></a><span class="string">  &lt;form name=&quot;form1&quot; method=&quot;post&quot; action=&quot;&quot;&gt;</span>
+<a name="55"><font size=-1>55     </font></a><span class="string">    &lt;table width=&quot;551&quot; border=&quot;0&quot;  align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;1&quot;&gt;</span>
+<a name="56"><font size=-1>56     </font></a><span class="string">      &lt;tr class=&quot;tabel&quot;&gt;</span>
+<a name="57"><font size=-1>57     </font></a><span class="string">        &lt;th width=&quot;151&quot; height=&quot;35px&quot; bgcolor=&quot;#575757&quot; scope=&quot;col&quot;&gt;Produk&lt;/th&gt;</span>
+<a name="58"><font size=-1>58     </font></a><span class="string">        &lt;th width=&quot;117&quot; bgcolor=&quot;#575757&quot; scope=&quot;col&quot;&gt;Harga&lt;/th&gt;</span>
+<a name="59"><font size=-1>59     </font></a><span class="string">        &lt;th width=&quot;111&quot; bgcolor=&quot;#575757&quot; scope=&quot;col&quot;&gt;Ukuran&lt;/th&gt;</span>
+<a name="60"><font size=-1>60     </font></a><span class="string">        &lt;th width=&quot;111&quot; bgcolor=&quot;#575757&quot; scope=&quot;col&quot;&gt;Qty&lt;/th&gt;</span>
+<a name="61"><font size=-1>61     </font></a><span class="string">        &lt;th width=&quot;150&quot; bgcolor=&quot;#575757&quot; scope=&quot;col&quot;&gt;Jumlah&lt;/th&gt;</span>
+<a name="62"><font size=-1>62     </font></a><span class="string">      &lt;/tr&gt;</span>
+<a name="63"><font size=-1>63     </font></a><span class="string"> </span>
+<a name="64"><font size=-1>64     </font></a><span class="string"></span><span class="default">&lt;?php</span>
+<a name="65"><font size=-1>65     </font></a><span class="default"></span>
+<a name="66"><font size=-1>66     </font></a><span class="default"></span><span class="comment">// SQL Untuk Mengambil Data di Table Keranjang //</span>
+<a name="67"><font size=-1>67     </font></a><span class="comment"></span>
+<a name="68"><font size=-1>68     </font></a><span class="comment"></span>
+<a name="69"><font size=-1>69     </font></a><span class="comment"></span><span class="default">$<a href="dictionary_S.html#942">sql_keranjang</a>=<a href="dictionary_M.html#596">mysql_query</a>(</span><span class="string">&quot;select *from t_keranjang INNER JOIN t_produk on t_keranjang.id_produk=t_produk.id_produk where id_member=&quot;</span><span class="default">.$<a href="dictionary_Non-Alpha.html#113">_SESSION</a>[</span><span class="string">'id_member'</span><span class="default">].</span><span class="string">&quot;&quot;</span><span class="default">);</span>
+<a name="70"><font size=-1>70     </font></a><span class="default"></span><span class="keyword">while</span><span class="default">($<a href="dictionary_R.html#800">row_keranjang</a>=<a href="dictionary_M.html#594">mysql_fetch_assoc</a>($<a href="dictionary_S.html#942">sql_keranjang</a>)){</span>
+<a name="71"><font size=-1>71     </font></a><span class="default"></span>
+<a name="72"><font size=-1>72     </font></a><span class="default">$<a href="dictionary_J.html#484">jumlah</a>=$<a href="dictionary_R.html#800">row_keranjang</a>[</span><span class="string">'qty'</span><span class="default">]*$row_keranjang[</span><span class="string">'harga_produk'</span><span class="default">];</span>
+<a name="73"><font size=-1>73     </font></a><span class="default">$<a href="dictionary_T.html#1083">total</a>=$total+$<a href="dictionary_J.html#484">jumlah</a>;</span>
+<a name="74"><font size=-1>74     </font></a><span class="default"></span>
+<a name="75"><font size=-1>75     </font></a><span class="default">$<a href="dictionary_D.html#275">duit_harga</a>=<a href="dictionary_F.html#316">formatRupiah</a>($<a href="dictionary_R.html#800">row_keranjang</a>[</span><span class="string">'harga_produk'</span><span class="default">]);</span>
+<a name="76"><font size=-1>76     </font></a><span class="default">$<a href="dictionary_D.html#277">duit_jumlah</a>=<a href="dictionary_F.html#316">formatRupiah</a>($<a href="dictionary_J.html#484">jumlah</a>);</span>
+<a name="77"><font size=-1>77     </font></a><span class="default">$<a href="dictionary_D.html#279">duit_total</a>=<a href="dictionary_F.html#316">formatRupiah</a>($<a href="dictionary_T.html#1083">total</a>);</span>
+<a name="78"><font size=-1>78     </font></a><span class="default"></span>
+<a name="79"><font size=-1>79     </font></a><span class="default">  </span><span class="keyword">echo</span><span class="string">&quot;&lt;tr bgcolor=#F6F4F5&gt;</span>
+<a name="80"><font size=-1>80     </font></a><span class="string">    &lt;td align=center&gt;&quot;</span><span class="default">.$<a href="dictionary_R.html#800">row_keranjang</a>[</span><span class="string">'nama_produk'</span><span class="default">].</span><span class="string">&quot;&lt;/td&gt;</span>
+<a name="81"><font size=-1>81     </font></a><span class="string">    &lt;td align=center&gt;&quot;</span><span class="default">.$<a href="dictionary_D.html#275">duit_harga</a>.</span><span class="string">&quot;&lt;/td&gt;</span>
+<a name="82"><font size=-1>82     </font></a><span class="string">	 &lt;td align=center&gt;&quot;</span><span class="default">.$<a href="dictionary_R.html#800">row_keranjang</a>[</span><span class="string">'ukuran'</span><span class="default">].</span><span class="string">&quot;&lt;/td&gt;</span>
+<a name="83"><font size=-1>83     </font></a><span class="string">    &lt;td align=center&gt;&quot;</span><span class="default">.$<a href="dictionary_R.html#800">row_keranjang</a>[</span><span class="string">'qty'</span><span class="default">].</span><span class="string">&quot;&lt;/td&gt;</span>
+<a name="84"><font size=-1>84     </font></a><span class="string">    &lt;td align=center&gt;&quot;</span><span class="default">.$<a href="dictionary_D.html#277">duit_jumlah</a>.</span><span class="string">&quot;&lt;/td&gt;</span>
+<a name="85"><font size=-1>85     </font></a><span class="string">  &lt;/tr&gt;</span>
+<a name="86"><font size=-1>86     </font></a><span class="string">&lt;input type='hidden' name='qty[]' value=&quot;</span><span class="default">.$<a href="dictionary_R.html#800">row_keranjang</a>[</span><span class="string">'qty'</span><span class="default">].</span><span class="string">&quot; /&gt;</span>
+<a name="87"><font size=-1>87     </font></a><span class="string">&lt;input type='hidden' name='ukuran[]' value=&quot;</span><span class="default">.$<a href="dictionary_R.html#800">row_keranjang</a>[</span><span class="string">'ukuran'</span><span class="default">].</span><span class="string">&quot; /&gt;</span>
+<a name="88"><font size=-1>88     </font></a><span class="string">&lt;input type='hidden' name='id_keranjang[]' value=&quot;</span><span class="default">.$<a href="dictionary_R.html#800">row_keranjang</a>[</span><span class="string">'id_keranjang'</span><span class="default">].</span><span class="string">&quot; /&gt;</span>
+<a name="89"><font size=-1>89     </font></a><span class="string">&lt;input type='hidden' name='id_produk[]' value=&quot;</span><span class="default">.$<a href="dictionary_R.html#800">row_keranjang</a>[</span><span class="string">'id_produk'</span><span class="default">].</span><span class="string">&quot; /&gt;</span>
+<a name="90"><font size=-1>90     </font></a><span class="string">&lt;input type='hidden' name='id_mem[]' value=&quot;</span><span class="default">.$<a href="dictionary_I.html#413">id_member</a>.</span><span class="string">&quot; /&gt;</span>
+<a name="91"><font size=-1>91     </font></a><span class="string">&lt;input type='hidden' name='tgl_order[]' value=&quot;</span><span class="default">.$<a href="dictionary_T.html#1056">tgl_sekarang</a>.</span><span class="string">&quot; /&gt;</span>
+<a name="92"><font size=-1>92     </font></a><span class="string">&lt;input type='hidden' name='status[]' value='Belum Lunas'/&gt;</span>
+<a name="93"><font size=-1>93     </font></a><span class="string">  </span>
+<a name="94"><font size=-1>94     </font></a><span class="string">  </span>
+<a name="95"><font size=-1>95     </font></a><span class="string">&quot;</span><span class="default">; }</span>
+<a name="96"><font size=-1>96     </font></a><span class="default"></span>
+<a name="97"><font size=-1>97     </font></a><span class="default">	$<a href="dictionary_T.html#1083">total</a>=$total+$<a href="dictionary_B.html#199">biaya_kirim</a>;</span>
+<a name="98"><font size=-1>98     </font></a><span class="default">	$<a href="dictionary_D.html#279">duit_total</a>=<a href="dictionary_F.html#316">formatRupiah</a>($<a href="dictionary_T.html#1083">total</a>);</span>
+<a name="99"><font size=-1>99     </font></a><span class="default">	</span>
+<a name="100"><font size=-1>100     </font></a><span class="default">	$<a href="dictionary_Non-Alpha.html#113">_SESSION</a>[</span><span class="string">'total_bayar'</span><span class="default">]=$<a href="dictionary_T.html#1083">total</a>;</span>
+<a name="101"><font size=-1>101     </font></a><span class="default">	</span>
+<a name="102"><font size=-1>102     </font></a><span class="default"></span>
+<a name="103"><font size=-1>103     </font></a><span class="default"> ?&gt;</span>
+<a name="104"><font size=-1>104     </font></a><span class="default">      </span><span class="string">&lt;tr bgcolor=&quot;#E2EBEE&quot;&gt;</span>
+<a name="105"><font size=-1>105     </font></a><span class="string">		&lt;td colspan=&quot;4&quot; align=&quot;right&quot;&gt;&lt;strong style=&quot;font-weight:bold; colir:&quot;&gt;Biaya Pengiriman : &amp;nbsp;&lt;/strong&gt;&lt;/td&gt;&lt;td align=&quot;center&quot; height='30px'&gt;&lt;b style=&quot;font-weight:bold&quot;&gt;</span><span class="default">&lt;?php </span><span class="keyword">echo </span><span class="string">&quot;&quot;</span><span class="default">.<a href="dictionary_F.html#316">formatRupiah</a>($<a href="dictionary_B.html#199">biaya_kirim</a>).</span><span class="string">&quot;&quot;</span><span class="default">; ?&gt;</span><span class="string">&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<a name="106"><font size=-1>106     </font></a><span class="string">         &lt;tr bgcolor=&quot;#B9FFFF&quot;&gt;&lt;td colspan=&quot;4&quot; align=&quot;right&quot;&gt;&lt;strong style=&quot;font-weight:bold; colir:&quot;&gt;Total : &amp;nbsp;&lt;/strong&gt;&lt;/td&gt;</span>
+<a name="107"><font size=-1>107     </font></a><span class="string">		</span>
+<a name="108"><font size=-1>108     </font></a><span class="string">        &lt;td align=&quot;center&quot; height='30px'&gt;&lt;b style=&quot;font-weight:bold&quot;&gt;</span><span class="default">&lt;?php </span><span class="keyword">echo </span><span class="default">$<a href="dictionary_D.html#279">duit_total</a>; ?&gt;</span><span class="string">&lt;/b&gt;&lt;/td&gt;</span>
+<a name="109"><font size=-1>109     </font></a><span class="string">      &lt;/tr&gt;</span>
+<a name="110"><font size=-1>110     </font></a><span class="string">    &lt;/table&gt;&lt;br&gt;&lt;br&gt;</span>
+<a name="111"><font size=-1>111     </font></a><span class="string">	&lt;p align=&quot;right&quot;&gt;</span>
+<a name="112"><font size=-1>112     </font></a><span class="string">   &lt;input type=&quot;button&quot; onclick=&quot;window.location='index.php?module=cart'&quot; class=&quot;button green&quot; name=&quot;ubah&quot; id=&quot;ubah&quot; value=&quot;Ubah Order&quot;&gt;</span>
+<a name="113"><font size=-1>113     </font></a><span class="string">          &lt;input type=&quot;submit&quot; name=&quot;co&quot; id=&quot;co&quot; value=&quot;Check Out&quot; class=&quot;button blue&quot;&gt;&lt;/p&gt;</span>
+<a name="114"><font size=-1>114     </font></a><span class="string">  &lt;/form&gt;</span>
+<a name="115"><font size=-1>115     </font></a><span class="string">&lt;p&gt;&amp;nbsp;&lt;/p&gt;</span>
+<a name="116"><font size=-1>116     </font></a><span class="string">    &lt;p&gt;&amp;nbsp;&lt;/p&gt;</span>
+<a name="117"><font size=-1>117     </font></a><span class="string"></span>
+<a name="118"><font size=-1>118     </font></a><span class="string"></span><span class="default">&lt;?php } ?&gt;</span>
+<a name="119"><font size=-1>119     </font></a><span class="default"></span>
+</pre></body></html>

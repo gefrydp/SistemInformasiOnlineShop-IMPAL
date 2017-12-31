@@ -1,0 +1,78 @@
+<html><head><title>k-profil.php</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" type="text/css" href="sourcestyles.css" />
+</head><body link="blue" vlink="blue">
+<h3>File: Z:\demo\impal\SistemInformasiOnlineShop-IMPAL\admin\module\profil\k-profil.php</h3>
+<SCRIPT>
+defaultStatus = "File: Z:\\demo\\impal\\SistemInformasiOnlineShop-IMPAL\\admin\\module\\profil\\k-profil.php";
+top.document.title  = "k-profil.php";
+</SCRIPT>
+<pre><span class="default"></span><a name="1"><font size=-1>1     </font></a><span class="default">&lt;?php</span>
+<a name="2"><font size=-1>2     </font></a><span class="default">	<a href="dictionary_S.html#849">session_start</a>();</span>
+<a name="3"><font size=-1>3     </font></a><span class="default">	</span><span class="keyword">if</span><span class="default">(!</span><span class="keyword">isset</span><span class="default">($<a href="dictionary_Non-Alpha.html#113">_SESSION</a>[</span><span class="string">'id_user'</span><span class="default">])){</span>
+<a name="4"><font size=-1>4     </font></a><span class="default">		</span><span class="keyword">echo </span><span class="string">&quot;&lt;script&gt;window.location=('login.php');&lt;/script&gt;&quot;</span><span class="default">;</span>
+<a name="5"><font size=-1>5     </font></a><span class="default">	}</span>
+<a name="6"><font size=-1>6     </font></a><span class="default">	</span>
+<a name="7"><font size=-1>7     </font></a><span class="default">	$<a href="dictionary_S.html#960">sql_profil</a>=<a href="dictionary_M.html#596">mysql_query</a>(</span><span class="string">&quot;select *from t_profil where id_profil=1&quot;</span><span class="default">);</span>
+<a name="8"><font size=-1>8     </font></a><span class="default">	$<a href="dictionary_R.html#813">row_profil</a>=<a href="dictionary_M.html#594">mysql_fetch_assoc</a>($<a href="dictionary_S.html#960">sql_profil</a>);</span>
+<a name="9"><font size=-1>9     </font></a><span class="default">	</span>
+<a name="10"><font size=-1>10     </font></a><span class="default">	</span><span class="keyword">if</span><span class="default">(</span><span class="keyword">isset</span><span class="default">($<a href="dictionary_Non-Alpha.html#111">_POST</a>[</span><span class="string">'simpan'</span><span class="default">])){</span>
+<a name="11"><font size=-1>11     </font></a><span class="default">		$<a href="dictionary_S.html#964">sql_simpan</a>=<a href="dictionary_M.html#596">mysql_query</a>(</span><span class="string">&quot;update *from t_profil SET nama_toko='&quot;</span><span class="default">.<a href="dictionary_H.html#367">htmlentities</a>($<a href="dictionary_Non-Alpha.html#111">_POST</a>[</span><span class="string">'nama_toko'</span><span class="default">]).</span><span class="string">&quot;', kota_toko='&quot;</span><span class="default">.<a href="dictionary_H.html#367">htmlentities</a>($<a href="dictionary_Non-Alpha.html#111">_POST</a>[</span><span class="string">'kota_toko'</span><span class="default">]).</span><span class="string">&quot;', provinsi_toko='&quot;</span><span class="default">.<a href="dictionary_H.html#367">htmlentities</a>($<a href="dictionary_Non-Alpha.html#111">_POST</a>[</span><span class="string">'provinsi_toko'</span><span class="default">]).</span><span class="string">&quot;', alamat_toko='&quot;</span><span class="default">.<a href="dictionary_H.html#367">htmlentities</a>($<a href="dictionary_Non-Alpha.html#111">_POST</a>[</span><span class="string">'alamat_toko'</span><span class="default">]).</span><span class="string">&quot;', kode_pos='&quot;</span><span class="default">.<a href="dictionary_H.html#367">htmlentities</a>($<a href="dictionary_Non-Alpha.html#111">_POST</a>[</span><span class="string">'kode_pos'</span><span class="default">]).</span><span class="string">&quot;' where id_profil=1&quot;</span><span class="default">);</span>
+<a name="12"><font size=-1>12     </font></a><span class="default">		</span><span class="keyword">echo </span><span class="string">&quot;&lt;script&gt;alert('Profil Berhasil diperbarui!');window.location=('index.php?module=profil');&lt;/script&gt;&quot;</span><span class="default">;</span>
+<a name="13"><font size=-1>13     </font></a><span class="default">	}</span>
+<a name="14"><font size=-1>14     </font></a><span class="default">	</span>
+<a name="15"><font size=-1>15     </font></a><span class="default">?&gt;</span>
+<a name="16"><font size=-1>16     </font></a><span class="default"></span>
+<a name="17"><font size=-1>17     </font></a><span class="default"></span><span class="string">&lt;div class=&quot;path&quot;&gt;&lt;h3&gt;- Edit Profil Toko : &lt;/h3&gt;&lt;/div&gt;</span>
+<a name="18"><font size=-1>18     </font></a><span class="string">&lt;div class=&quot;input&quot; style=&quot;padding:5px&quot;&gt;</span>
+<a name="19"><font size=-1>19     </font></a><span class="string">&lt;p&gt;&lt;/p&gt;</span>
+<a name="20"><font size=-1>20     </font></a><span class="string">&lt;form name=&quot;form1&quot; method=&quot;post&quot; action=&quot;&quot;&gt;</span>
+<a name="21"><font size=-1>21     </font></a><span class="string">&lt;table width=&quot;489&quot; height=&quot;250&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; align=&quot;center&quot;&gt;</span>
+<a name="22"><font size=-1>22     </font></a><span class="string">  &lt;tr align=&quot;left&quot;&gt;</span>
+<a name="23"><font size=-1>23     </font></a><span class="string">    &lt;td width=&quot;227&quot; scope=&quot;col&quot;&gt;Nama Toko&lt;/td&gt;</span>
+<a name="24"><font size=-1>24     </font></a><span class="string">    &lt;td width=&quot;10&quot; scope=&quot;col&quot;&gt;:&lt;/td&gt;</span>
+<a name="25"><font size=-1>25     </font></a><span class="string">    &lt;td width=&quot;256&quot; scope=&quot;col&quot;&gt;&lt;span id=&quot;sprytextfield1&quot;&gt;&lt;input name=&quot;nama_toko&quot; type=&quot;text&quot; id=&quot;nama_toko&quot; size=&quot;40&quot; maxlength=&quot;50&quot; value=&quot;</span><span class="default">&lt;?php </span><span class="keyword">echo </span><span class="default">$<a href="dictionary_R.html#813">row_profil</a>[</span><span class="string">'nama_toko'</span><span class="default">] ?&gt;</span><span class="string">&quot; /&gt;&lt;br /&gt;&lt;span class=&quot;textfieldRequiredMsg&quot;&gt;Input Masih Kosong!&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;</span>
+<a name="26"><font size=-1>26     </font></a><span class="string">  &lt;/tr&gt;</span>
+<a name="27"><font size=-1>27     </font></a><span class="string">  &lt;tr align=&quot;left&quot;&gt;</span>
+<a name="28"><font size=-1>28     </font></a><span class="string">    &lt;td&gt;Kota&lt;/td&gt;</span>
+<a name="29"><font size=-1>29     </font></a><span class="string">    &lt;td&gt;:&lt;/td&gt;</span>
+<a name="30"><font size=-1>30     </font></a><span class="string">    &lt;td&gt;&lt;span id=&quot;sprytextfield2&quot;&gt;&lt;input name=&quot;kota_toko&quot; type=&quot;text&quot; id=&quot;kota_toko&quot; size=&quot;30&quot; maxlength=&quot;50&quot; value=&quot;</span><span class="default">&lt;?php </span><span class="keyword">echo </span><span class="default">$<a href="dictionary_R.html#813">row_profil</a>[</span><span class="string">'kota_toko'</span><span class="default">] ?&gt;</span><span class="string">&quot; /&gt;&lt;br /&gt;&lt;span class=&quot;textfieldRequiredMsg&quot;&gt;Input Masih Kosong!&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;</span>
+<a name="31"><font size=-1>31     </font></a><span class="string">  &lt;/tr&gt;</span>
+<a name="32"><font size=-1>32     </font></a><span class="string">  &lt;tr align=&quot;left&quot;&gt;</span>
+<a name="33"><font size=-1>33     </font></a><span class="string">    &lt;td&gt;Provinsi&lt;/td&gt;</span>
+<a name="34"><font size=-1>34     </font></a><span class="string">    &lt;td&gt;:&lt;/td&gt;</span>
+<a name="35"><font size=-1>35     </font></a><span class="string">    &lt;td&gt;&lt;span id=&quot;sprytextfield3&quot;&gt;&lt;input name=&quot;provinsi_toko&quot; type=&quot;text&quot; id=&quot;provinsi_toko&quot; size=&quot;30&quot; maxlength=&quot;50&quot; value=&quot;</span><span class="default">&lt;?php </span><span class="keyword">echo </span><span class="default">$<a href="dictionary_R.html#813">row_profil</a>[</span><span class="string">'provinsi_toko'</span><span class="default">] ?&gt;</span><span class="string">&quot; /&gt;&lt;br /&gt;&lt;span class=&quot;textfieldRequiredMsg&quot;&gt;Input Masih Kosong!&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;</span>
+<a name="36"><font size=-1>36     </font></a><span class="string">  &lt;/tr&gt;</span>
+<a name="37"><font size=-1>37     </font></a><span class="string">  &lt;tr align=&quot;left&quot;&gt;</span>
+<a name="38"><font size=-1>38     </font></a><span class="string">    &lt;td&gt;Alamat&lt;/td&gt;</span>
+<a name="39"><font size=-1>39     </font></a><span class="string">    &lt;td&gt;:&lt;/td&gt;</span>
+<a name="40"><font size=-1>40     </font></a><span class="string">    &lt;td&gt;&lt;span id=&quot;sprytextfield4&quot;&gt;&lt;input name=&quot;alamat_toko&quot; type=&quot;text&quot; id=&quot;alamat_toko&quot; size=&quot;50&quot; maxlength=&quot;300&quot; value=&quot;</span><span class="default">&lt;?php </span><span class="keyword">echo </span><span class="default">$<a href="dictionary_R.html#813">row_profil</a>[</span><span class="string">'alamat_toko'</span><span class="default">] ?&gt;</span><span class="string">&quot; /&gt;&lt;br /&gt;&lt;span class=&quot;textfieldRequiredMsg&quot;&gt;Input Masih Kosong!&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;</span>
+<a name="41"><font size=-1>41     </font></a><span class="string">  &lt;/tr&gt;</span>
+<a name="42"><font size=-1>42     </font></a><span class="string">  &lt;tr align=&quot;left&quot;&gt;</span>
+<a name="43"><font size=-1>43     </font></a><span class="string">    &lt;td&gt;Kode POS&lt;/td&gt;</span>
+<a name="44"><font size=-1>44     </font></a><span class="string">    &lt;td&gt;:&lt;/td&gt;</span>
+<a name="45"><font size=-1>45     </font></a><span class="string">    &lt;td&gt;&lt;span id=&quot;sprytextfield5&quot;&gt;&lt;input name=&quot;kode_pos&quot; type=&quot;text&quot; id=&quot;kode_pos&quot; size=&quot;10&quot; maxlength=&quot;10&quot; value=&quot;</span><span class="default">&lt;?php </span><span class="keyword">echo </span><span class="default">$<a href="dictionary_R.html#813">row_profil</a>[</span><span class="string">'kode_pos'</span><span class="default">] ?&gt;</span><span class="string">&quot; onkeypress=&quot;return harusangka(event)&quot;/&gt;&lt;br /&gt;&lt;span class=&quot;textfieldRequiredMsg&quot;&gt;Input Masih Kosong!&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;</span>
+<a name="46"><font size=-1>46     </font></a><span class="string">  &lt;/tr&gt;</span>
+<a name="47"><font size=-1>47     </font></a><span class="string">  &lt;tr&gt;</span>
+<a name="48"><font size=-1>48     </font></a><span class="string">    &lt;td&gt;&amp;nbsp;&lt;/td&gt;</span>
+<a name="49"><font size=-1>49     </font></a><span class="string">    &lt;td&gt;&lt;/td&gt;</span>
+<a name="50"><font size=-1>50     </font></a><span class="string">    &lt;td align=&quot;right&quot;&gt;</span>
+<a name="51"><font size=-1>51     </font></a><span class="string">	&lt;input type=&quot;reset&quot; name=&quot;batal&quot; id=&quot;batal&quot; value=&quot;Batal&quot; class=&quot;button red&quot; onClick=&quot;window.location.href='index.php?module=profil'&quot;&gt;</span>
+<a name="52"><font size=-1>52     </font></a><span class="string">            &lt;input type=&quot;submit&quot; name=&quot;simpan&quot; class=&quot;button green&quot; id=&quot;simpan&quot; value=&quot;Simpan&quot; /&gt;</span>
+<a name="53"><font size=-1>53     </font></a><span class="string">	&lt;/td&gt;</span>
+<a name="54"><font size=-1>54     </font></a><span class="string">  &lt;/tr&gt;</span>
+<a name="55"><font size=-1>55     </font></a><span class="string">&lt;/table&gt;</span>
+<a name="56"><font size=-1>56     </font></a><span class="string">&lt;/form&gt;</span>
+<a name="57"><font size=-1>57     </font></a><span class="string">&lt;p&gt;&lt;/p&gt;</span>
+<a name="58"><font size=-1>58     </font></a><span class="string">&lt;/div&gt;</span>
+<a name="59"><font size=-1>59     </font></a><span class="string">&lt;script type=&quot;text/javascript&quot;&gt;</span>
+<a name="60"><font size=-1>60     </font></a><span class="string">var sprytextfield1 = new Spry.Widget.ValidationTextField(&quot;sprytextfield1&quot;);</span>
+<a name="61"><font size=-1>61     </font></a><span class="string">var sprytextfield2 = new Spry.Widget.ValidationTextField(&quot;sprytextfield2&quot;);</span>
+<a name="62"><font size=-1>62     </font></a><span class="string">var sprytextfield3 = new Spry.Widget.ValidationTextField(&quot;sprytextfield3&quot;);</span>
+<a name="63"><font size=-1>63     </font></a><span class="string">var sprytextfield4 = new Spry.Widget.ValidationTextField(&quot;sprytextfield4&quot;);</span>
+<a name="64"><font size=-1>64     </font></a><span class="string">var sprytextfield5 = new Spry.Widget.ValidationTextField(&quot;sprytextfield5&quot;);</span>
+<a name="65"><font size=-1>65     </font></a><span class="string"></span>
+<a name="66"><font size=-1>66     </font></a><span class="string"></span>
+<a name="67"><font size=-1>67     </font></a><span class="string">&lt;/script&gt;</span>
+<a name="68"><font size=-1>68     </font></a><span class="string"></span>
+</pre></body></html>
